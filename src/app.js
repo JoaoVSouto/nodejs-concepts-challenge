@@ -71,8 +71,18 @@ app.delete('/repositories/:id', (request, response) => {
   return response.status(204).send();
 });
 
-app.post("/repositories/:id/like", (request, response) => {
-  // TODO
+app.post('/repositories/:id/like', (request, response) => {
+  const { id } = request.params;
+
+  const repository = repositories.find(r => r.id === id);
+
+  if (!repository) {
+    return response.status(400).json({ error: 'Repository does not exist.' });
+  }
+
+  repository.likes += 1;
+
+  return response.json(repository);
 });
 
 module.exports = app;
