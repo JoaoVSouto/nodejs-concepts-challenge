@@ -1,7 +1,7 @@
-const express = require("express");
-const cors = require("cors");
+const express = require('express');
+const cors = require('cors');
 
-// const { v4: uuid } = require('uuid');
+const { v4: uuid } = require('uuid');
 
 const app = express();
 
@@ -10,8 +10,8 @@ app.use(cors());
 
 const repositories = [];
 
-app.get("/repositories", (request, response) => {
-  // TODO
+app.get('/repositories', (request, response) => {
+  return response.json(repositories);
 });
 
 app.post("/repositories", (request, response) => {
